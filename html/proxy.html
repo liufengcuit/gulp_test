@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    var arr = [];
+    var proxy = new Proxy(arr, {
+        set(target, key, value) {
+            console.log(target)
+            console.log(key)
+            console.log(value)
+            let res = Reflect.set(target, key, value);
+
+            // console.log(res)
+
+            return res;
+        },
+        get(target, property) {
+            console.log(target)
+            console.log(property)
+            
+            return target[property];
+        }
+    })
+    proxy[0] = 100;
+    console.log(arr)
+    console.log(proxy)
+
+
+
+
+
+</script>
